@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt-nodejs');
 // user schema
 var DoctorSchema = new Schema({
     firstName: String,
-    name: String,
+    lastName: String,
     speciality: String,
     username: {type: String, required: true, index: {unique: true}},
     password: {type: String, required: true, select: false}

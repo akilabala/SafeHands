@@ -35,7 +35,8 @@ module.exports = function (app, express) {
                     // if user is found and password is right
                     // create a token
                     var token = jwt.sign({
-                        name: user.name,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
                         username: user.username
                     }, superSecret, {
                         expiresInMinutes: 1440 // expires in 24 hours
@@ -101,8 +102,8 @@ module.exports = function (app, express) {
         .post(function (req, res) {
 
             var doctor = new Doctor();		// create a new instance of the User model
-            doctor.name = req.body.name;  // set the users name (comes from the request)
-            doctor.firstname = req.body.firstName;  // set the users name (comes from the request)
+            doctor.lastName = req.body.lastName;  // set the users name (comes from the request)
+            doctor.firstName = req.body.firstName;  // set the users name (comes from the request)
             doctor.username = req.body.username;  // set the users username (comes from the request)
             doctor.password = req.body.password;  // set the users password (comes from the request)
             doctor.speciality = req.body.speciality;  // set the users password (comes from the request)
@@ -153,7 +154,7 @@ module.exports = function (app, express) {
                 if (err) res.send(err);
 
                 // set the new user information if it exists in the request
-                if (req.body.name) doctor.name = req.body.name;
+                if (req.body.lastName) doctor.lastName = req.body.lastName;
                 if (req.body.firstName) doctor.firstName = req.body.firstName;
                 if (req.body.username) doctor.username = req.body.username;
                 if (req.body.password) doctor.password = req.body.password;
@@ -190,12 +191,13 @@ module.exports = function (app, express) {
         .post(function (req, res) {
 
             var appointment = new Appointment();
-            appointment.patientName = req.body.patientName;
-            appointment.phoneNumber = req.body.phoneNumber;
-            appointment.email = req.body.email;
+            appointment.firstName = req.body.firstName;
+            appointment.lastName = req.body.lastName;
+            appointment.phone = req.body.phone;
+            appointment.emailId = req.body.emailId;
             appointment.speciality = req.body.speciality;
-            appointment.date = req.body.date;
-            appointment.time = req.body.time;
+            appointment.appointmentDate = req.body.appointmentDate;
+            appointment.appointmentTime = req.body.appointmentTime;
 
             appointment.save(function (err) {
                 if (err) {
@@ -230,7 +232,7 @@ module.exports = function (app, express) {
             console.log(start);
             Doctor.findById(req.params.doctor_id, function (err, doctor) {
                 if (err) res.send(err);
-                Appointment.find({speciality:doctor.speciality, date: {$gte: start} }, function (err, appointments) {
+                Appointment.find({speciality:doctor.speciality, appointmentDate: {$gte: start} }, function (err, appointments) {
                     if (err) res.send(err);
 
                     // return the users

@@ -4,13 +4,14 @@ var Schema = mongoose.Schema;
 
 // user schema
 var AppointmentSchema = new Schema({
-    patientName: String,
-    phoneNumber: Number,
-    email: String,
+    firstName:String,
+    lastName: String,
+    phone: Number,
+    emailId: String,
     speciality: String,
-    create :{ type: Date, default: Date.now },
-    date: { type: Date, default: Date.now },
-    time: String
+    createdDate :{ type: Date, default: Date.now },
+    appointmentDate: { type: Date, default: Date.now },
+    appointmentTime: String
 });
 // return the model
 module.exports = mongoose.model('Appointment', AppointmentSchema);
