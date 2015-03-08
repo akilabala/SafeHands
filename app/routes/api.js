@@ -226,9 +226,11 @@ module.exports = function (app, express) {
     apiRouter.route('/appointment/:doctor_id')
         // get all the users (accessed at GET http://localhost:8080/api/appointment)
         .get(function (req, res) {
+            var start = new Date();
+            console.log(start);
             Doctor.findById(req.params.doctor_id, function (err, doctor) {
                 if (err) res.send(err);
-                Appointment.find({speciality:doctor.speciality}, function (err, appointments) {
+                Appointment.find({speciality:doctor.speciality, date: {$gte: start} }, function (err, appointments) {
                     if (err) res.send(err);
 
                     // return the users
