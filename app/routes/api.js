@@ -55,8 +55,40 @@ module.exports = function (app, express) {
         });
     });
 
+    apiRouter.route('/appointments')
+        .post(function (req, res) {
 
-    // route middleware to verify a token
+            var appointment = new Appointment();
+            appointment.firstName = req.body.firstName;
+            appointment.lastName = req.body.lastName;
+            appointment.phone = req.body.phone;
+            appointment.emailId = req.body.emailId;
+            appointment.speciality = req.body.speciality;
+            appointment.appointmentDate = req.body.appointmentDate;
+            appointment.appointmentTime = req.body.appointmentTime;
+
+            appointment.save(function (err) {
+                if (err) {
+                    // duplicate entry
+                    if (err.code == 11000)
+                        return res.json({success: false, message: 'Appointment Already exists'});
+                    else
+                        return res.send(err);
+                }
+
+                // return a message
+                res.json({message: 'Appointment created!'});
+            })
+
+        });
+
+    apiRouter.route('/appointments/:id')
+        .options(function (req, res) {
+            res.json({message: 'Resource is valid!'});
+        });
+
+
+/*    // route middleware to verify a token
     apiRouter.use(function (req, res, next) {
         // do logging
         console.log('Somebody just came to our app!');
@@ -85,7 +117,7 @@ module.exports = function (app, express) {
         }
 
         next(); // make sure we go to the next routes and don't stop here
-    });
+    });*/
 
 
     // test route to make sure everything is working
@@ -187,33 +219,7 @@ module.exports = function (app, express) {
         res.send(req.decoded);
     });
 
-    apiRouter.route('/appointment')
-        .post(function (req, res) {
-
-            var appointment = new Appointment();
-            appointment.firstName = req.body.firstName;
-            appointment.lastName = req.body.lastName;
-            appointment.phone = req.body.phone;
-            appointment.emailId = req.body.emailId;
-            appointment.speciality = req.body.speciality;
-            appointment.appointmentDate = req.body.appointmentDate;
-            appointment.appointmentTime = req.body.appointmentTime;
-
-            appointment.save(function (err) {
-                if (err) {
-                    // duplicate entry
-                    if (err.code == 11000)
-                        return res.json({success: false, message: 'Appointment Already exists'});
-                    else
-                        return res.send(err);
-                }
-
-                // return a message
-                res.json({message: 'Appointment created!'});
-            });
-
-        })
-
+    apiRouter.route('/appointments')
         // get all the users (accessed at GET http://localhost:8080/api/appointment)
         .get(function (req, res) {
             Appointment.find({}, function (err, appointments) {
