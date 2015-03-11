@@ -38,6 +38,11 @@ module.exports = function (app, express) {
         });
     });
 
+    apiRouter.route('/authenticate/:id')
+        .options(function (req, res) {
+            res.json({message: 'Resource is valid!'});
+        });
+
     apiRouter.route('/appointments')
         .post(function (req, res) {
             var appointment = new Appointment();
