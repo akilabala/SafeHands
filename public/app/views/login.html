@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A simple application to request and manage appointments for a health care center">
+    <title>SafeHands - Login</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+<!--<![endif]-->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="../css/layouts/marketing-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="../css/layouts/marketing.css">
+    <!--<![endif]-->
+</head>
+<body>
+
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a href="../views/index.html"><img src="../img/safeHands.png" alt="Safe Hands" /></a>
+    </div>
+</div>
+
+<div class="content-login">
+    <div class="login">
+        <h2 class="content-head is-center">Login</h2>
+
+        <div class="pure-g">
+            <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+                <form id="loginForm" class="pure-form pure-form-stacked">
+                    <fieldset>
+
+                        <label for="username">USERNAME</label>
+                        <input id="username" name="username" type="text" placeholder="Username">
+
+                        <label for="password">PASSWORD</label>
+                        <input id="password" name="password" type="password" placeholder="Password">
+
+                        <input id="loginBtn" type="button" class="pure-button" value="Login" />
+                    </fieldset>
+                </form>
+                <div id="errorLogin"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer l-box is-center">
+        © Safe Hands. All Rights Reserved.
+    </div>
+
+</div>
+<script src="../libs/jquery/dist/jquery.min.js"></script>
+<script src="../libs/jquery.validation/dist/jquery.validate.min.js"></script>
+<script src="../libs/jquery.validation/dist/additional-methods.min.js"></script>
+<script src="../libs/underscore/underscore-min.js"></script>
+<script src="../libs/backbone/backbone.js"></script>
+<script src="../js/models/appointment.js"></script>
+<script src="../js/collections/appointmentList.js"></script>
+<script src="../js/views/appointment.js"></script>
+<script src="../js/views/appointmentList.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/validation.js"></script>
+</body>
+</html>

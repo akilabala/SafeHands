@@ -37,20 +37,20 @@ app.use(morgan('dev'));
 // connect to our database (hosted on modulus.io)
 mongoose.connect(config.database);
 
-// ROUTES FOR OUR API =================
-// ====================================
-//basic route for the home page
-
-app.get('/', function (req, res) {
-    res.send('Welcome to the SafeHands Home Page');
-});
+//// ROUTES FOR OUR API =================
+//// ====================================
+////basic route for the home page
+//
+//app.get('/', function (req, res) {
+//    res.send('Welcome to the SafeHands Home Page');
+//});
 // API ROUTES ------------------------
 var apiRoutes = require('./app/routes/api')(app, express);
 app.use('/api', apiRoutes);
 
 // set static files location
 // used for requests that our frontend will make
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/app'));
 
 // MAIN CATCHALL ROUTE ---------------
 // SEND USERS TO FRONTEND ------------

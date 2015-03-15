@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A simple application to request and manage appointments for a health care center">
+    <title>SafeHands</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+<!--<![endif]-->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="../css/layouts/marketing-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="../css/layouts/marketing.css">
+    <!--<![endif]-->
+</head>
+<body>
+
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <img src="../img/safeHands.png" alt="Safe Hands" />
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="../views/login.html" class="pure-menu-link">Login</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">Safe Hands</h1>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="content">
+        <h2 class="content-head is-center">Request an Appointment</h2>
+
+        <div class="pure-g">
+            <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+                <form id="requestForm" class="pure-form pure-form-stacked">
+                    <fieldset>
+
+                        <label for="firstName">First Name</label>
+                        <input id="firstName" name="firstName" type="text" placeholder="First Name">
+
+                        <label for="lastName">Last Name</label>
+                        <input id="lastName" name="lastName" type="text" placeholder="Last Name">
+
+                        <label for="phone">Phone Number</label>
+                        <input id="phone" name="phone" type="tel" placeholder="Daytime Phone Number">
+
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="Email">
+
+                        <label for="specialty">Specialty</label>
+                        <select id="specialty" name="specialty">
+                            <option value="">Select a Speciality</option>
+                            <option>Cardiology</option>
+                            <option>Dermatology</option>
+                            <option>Family Medicine</option>
+                            <option>General Surgery</option>
+                            <option>Nephrology</option>
+                            <option>Neurology</option>
+                            <option>Obstetrics & Gynecology</option>
+                            <option>Oncology</option>
+                            <option>Orthopedic Surgery</option>
+                            <option>Rheumatology</option>
+                        </select>
+
+                        <label for="date">Date</label>
+                        <input id="date" name="date" type="date" placeholder="Email">
+
+                        <label for="time">Time</label>
+                        <select id="time" name="time">
+                            <option value="">Select a time</option>
+                            <option value="9">9:00 am</option>
+                            <option value="10">10:00 am</option>
+                            <option value="11">11:00 am</option>
+                            <option value="14">2:00 pm</option>
+                            <option value="15">3:00 pm</option>
+                            <option value="16">4:00 pm</option>
+                        </select>
+
+                        <input id="submitRequest" type="submit" class="pure-button" value="Submit" />
+                    </fieldset>
+                </form>
+                <div id="success"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer l-box is-center">
+        © Safe Hands. All Rights Reserved.
+    </div>
+
+</div>
+<script src="../libs/jquery/dist/jquery.min.js"></script>
+<script src="../libs/jquery.validation/dist/jquery.validate.min.js"></script>
+<script src="../libs/jquery.validation/dist/additional-methods.min.js"></script>
+<script src="../libs/underscore/underscore-min.js"></script>
+<script src="../libs/backbone/backbone.js"></script>
+<script src="../js/models/appointment.js"></script>
+<script src="../js/collections/appointmentList.js"></script>
+<script src="../js/views/appointment.js"></script>
+<script src="../js/views/appointmentList.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/validation.js"></script>
+</body>
+</html>
