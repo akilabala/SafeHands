@@ -25,12 +25,15 @@
 <div class="header">
     <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
         <a href="../views/index.html"><img src="../img/safeHands.png" alt="Safe Hands" /></a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a id="logout" href="../views/index.html" class="pure-menu-link">Logout</a></li>
+        </ul>
     </div>
 </div>
 
 <div class="content-login">
-    <div class="login">
-        <h2 class="content-head is-center">APPOINTMENTS</h2>
+    <div>
+        <h2 id="doctorName" class="content-head is-center"></h2>
     </div>
     <div id="appointments">
 
@@ -53,8 +56,14 @@
 <script src="../js/validation.js"></script>
 <script>
     $(function(){
-        app.router.start();
-        app.router.navigate("", {trigger: true});
+        var doctorName = window.localStorage.getItem("doctorName");
+        if (doctorName) {
+            $('#doctorName').text("Hello, Dr. " + doctorName);
+            app.router.start();
+            app.router.navigate("", {trigger: true});
+        } else {
+            window.open("../views/login.html", "_self");
+        }
     });
 </script>
 </body>

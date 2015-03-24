@@ -25,7 +25,7 @@ $(document).ready(function() {
             time: {
                 required: true
             },
-            specialty: {
+            speciality: {
                 required: true
             }
         },
@@ -44,8 +44,8 @@ $(document).ready(function() {
                 required: " Enter your email address.",
                 email: " Email addresses must be in this format: a@b.com."
             },
-            specialty: {
-                required: " Enter the specialty you are seeking."
+            speciality: {
+                required: " Enter the speciality you are seeking."
             },
             date: {
                 required: " Enter the date of your appointment."

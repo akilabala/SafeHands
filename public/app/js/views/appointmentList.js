@@ -18,8 +18,15 @@ app.AppointmentListView = Backbone.View.extend({
     },
 
     addOne: function(appointment) {
-        var appointmentView = new app.AppointmentView({model: appointment});
-        appointmentView.render();
-        this.$el.append(appointmentView.el);
+        console.log(appointment);
+        if (this.doesSpecialityMatch(appointment)) {
+            var appointmentView = new app.AppointmentView({model: appointment});
+            appointmentView.render();
+            this.$el.append(appointmentView.el);
+        }
+    },
+
+    doesSpecialityMatch: function(appointment) {
+        return appointment.get('speciality') == window.localStorage.getItem("speciality");
     }
 });
